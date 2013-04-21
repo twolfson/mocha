@@ -8,6 +8,13 @@ describe('One context', function () {
     console.log(this.context);
     this.context.should.equal('1');
   });
+
+  describe('nested', function () {
+    it('is isolated from other contexts', function () {
+      console.log(this.context);
+      this.context.should.equal('1');
+    });
+  });
 });
 
 describe('Another context', function () {
@@ -18,5 +25,12 @@ describe('Another context', function () {
   it('is isolated from the first context', function () {
     console.log(this.context);
     this.context.should.equal('2');
+  });
+
+  describe('nested', function () {
+    it('is isolated from the first context', function () {
+      console.log(this.context);
+      this.context.should.equal('2');
+    });
   });
 });
