@@ -24,27 +24,28 @@ describe('One context', function () {
   });
 });
 
-// describe('Another context', function () {
-//   before(function () {
-//     this.context = this.context || [];
-//     this.context.push(3);
-//   });
+describe('Another context', function () {
+  before(function () {
+    console.log(this.context);
+    this.context = this.context || [];
+    this.context.push(3);
+  });
 
-//   it('is isolated from the first context', function () {
-//     this.context.should.equal([3]);
-//   });
+  it('is isolated from the first context', function () {
+    assert.deepEqual(this.context, [3]);
+  });
 
-//   describe('nested', function () {
-//     before(function () {
-//       this.context.push(4);
-//     });
+  describe('nested', function () {
+    before(function () {
+      this.context.push(4);
+    });
 
-//     it('is isolated from the first context', function () {
-//       this.context.should.equal([3, 4]);
-//     });
-//   });
+    it('is isolated from the first context', function () {
+      assert.deepEqual(this.context, [3, 4]);
+    });
+  });
 
-//   it('is isolated from the first context', function () {
-//     this.context.should.equal([3]);
-//   });
-// });
+  it('is isolated from the first context', function () {
+    assert.deepEqual(this.context, [3]);
+  });
+});
