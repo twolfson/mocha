@@ -7,7 +7,7 @@ describe('One context', function () {
   });
 
   afterEach(function () {
-    console.log('myAfterEach');
+    console.log('local afterEach');
   });
 
   it('is isolated from other contexts', function () {
@@ -22,7 +22,12 @@ describe('One context', function () {
     });
 
     it('is isolated from other contexts', function () {
-      console.log('it2');
+      console.log('it3');
+      assert.deepEqual(this.context, [1, 2]);
+    });
+
+    it('is isolated from other contexts(2)', function () {
+      console.log('it4');
       assert.deepEqual(this.context, [1, 2]);
     });
   });
@@ -60,7 +65,7 @@ describe('One context', function () {
 // });
 
 afterEach(function () {
-  console.log('after');
+  console.log('global afterEach');
   // var key;
   // for (key in this) {
   //   delete this[key];
