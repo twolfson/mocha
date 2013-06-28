@@ -6,6 +6,10 @@ describe('One context', function () {
     this.context.push(1);
   });
 
+  afterEach(function () {
+    console.log('myAfterEach');
+  });
+
   it('is isolated from other contexts', function () {
     console.log('it1');
     assert.deepEqual(this.context, [1]);
